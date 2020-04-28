@@ -25,9 +25,24 @@ export function Stopwatch() {
   };
 
   const onLap = () => {
-    setTimes([...times, timer]);
+    setTimes([timer, ...times]);
     setTimer(0);
   };
+
+  const onClear = () => {
+    setTimes([]);
+  };
+
+  // const onStartStop = () => {
+  //   if (timerInterval.current) return;
+
+  //   timerInterval.current = setInterval(() => {
+  //     setTimer((timer) => timer + 1);
+  //   }, 10);
+  //   else {
+
+  //   }
+  // };
 
   return (
     <div>
@@ -37,6 +52,8 @@ export function Stopwatch() {
         <button onClick={onStop}>STOP</button>
         <button onClick={onLap}>LAP</button>
         <button onClick={onReset}>RESET</button>
+        <button onClick={onClear}>CLEAR LAPS</button>
+        {/* <button onClick={onStartStop}>START/STOP</button> */}
       </div>
       <div>
         {times.map((time, index) => (
